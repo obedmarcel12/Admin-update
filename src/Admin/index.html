@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Content Manager</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News Page</title>
+    <!-- Other head content (CSS, meta tags, etc.) -->
   </head>
   <body>
-    <h1>latest News</h1>
-    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <!-- Other content of your page -->
+
+    <!-- This is where the news content will be loaded -->
+    <div id="news-container">
+      <p>10,0000 shot dead in aba</p>
+    </div>
+
+    <!-- Include Marked.js and your custom script -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+      async function loadNews() {
+        // Change the path to the actual location of your markdown file
+        const response = await fetch('/Admin.md')
+        const markdown = await response.text()
+        const htmlContent = marked(markdown) // Convert markdown to HTML
+
+        document.getElementById('news-container').innerHTML = htmlContent
+      }
+
+      loadNews()
+    </script>
   </body>
 </html>
