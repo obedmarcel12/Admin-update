@@ -19,7 +19,7 @@
     <script>
       async function loadNews() {
         // Change the path to the actual location of your markdown file
-        const response = await fetch('/Admin.md')
+        const response = await fetch('/content/Admin.md')
         const markdown = await response.text()
         const htmlContent = marked(markdown) // Convert markdown to HTML
 
